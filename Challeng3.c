@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main (){
-    int x,y;
+    int x,y,z;
     printf("entre number x :");
       scanf("%d",&x);
     printf("entre number y :");
@@ -9,7 +9,8 @@ int main (){
             
             if (x==y)
             {
-              printf("fois : %d*%d=%d",x,y,x*y);
+             z= (x+y)*3;
+              printf("fois : %d",z);
               
             }
             else

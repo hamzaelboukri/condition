@@ -7,26 +7,22 @@ int main (){
      switch (alphabit)
      {
      case 'a':
-        printf("voyelle");
-        break;
+        
      case 'b':
-        printf("voyelle");
-        break;
-    case 'i':
-        printf("voyelle");
-        break;
+        
+     case 'i':
+        
      case 'o':
-        printf("voyelle");
-        break;
+        
      case 'e':
-        printf("voyelle");
-        break;
+        
+        
      case 'u':
-        printf("voyelle");
-        break;
+        
+       
      case 'y':
-        printf("voyelle");
-        break;
+     printf("voyelle");
+     break;
      
      default: printf("alphabit est consonnes ");
         break;
