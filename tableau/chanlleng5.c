@@ -19,9 +19,8 @@ int main(){
     if (muni>tab[i])
         {
                muni=tab[i];
-              
-
-                    }
+        
+ }
  
  }
     printf("le muni elemont :%d",muni);
