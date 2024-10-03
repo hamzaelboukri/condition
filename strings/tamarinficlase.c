@@ -14,11 +14,20 @@ int main (){
     }
     printf("entre you want git back in the arry");
     scanf("%d",&y);
-    tab[x]=y;
-    for (int i = 0; i <= x; i++)
-    {
-       printf("%d",tab[i]);
-        
+    
+     int str = x;
+    int tmp;
+
+    for (int i = 0; i < str; i++) {
+        if (tab[i] == y) {
+            tmp = tab[str];
+            tab[str] = tab[i];
+            tab[i] = tmp;
+            str--;
+        }
+    }
+    for (int i = 0; i < x; i++) {
+        printf("%d ", tab[i]);
     }
     
     
