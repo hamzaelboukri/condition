@@ -13,9 +13,22 @@ typedef struct
     int age;
     char reservaton_date[11];
 } reserve;
+reserve res[reservation]= {
+     {1, "hamza", "bkr", "validated", "0687546662", 25, "01-01-2024"},
+    {2, "noha", "fakri", "postponed", "064358729", 30, "08-01-2024"},
+    {3, "cr7", "no", "canceled", "0145784312", 22, "03-01-2024"},
+    {4, "kuroko", "hokmi", "processed", "0657983627", 28, "04-01-2024"},
+    {5, "abdo", "samir", "validated", "0784560987", 26, "05-01-2024"},
+    {6, "iman", "naroto", "postponed", "07854623", 31, "06-01-2024"},
+    {7, "hinat", "hitler", "canceled", "0689784534", 29, "07-01-2024"},
+    {8, "soha", "ksiri", "processed", "0789654321", 24, "02-01-2024"},
+    {9, "mohammed", "malyan", "validated", "0712345678", 27, "09-01-2024"},
+    {10, "messi", "leo", "postponed", "076589543", 23, "10-01-2024"},
+};
 
-reserve res[reservation];
+
 int resservationcount = 0;
+int idgenerator = 0;
 void search();
 void serchbydate();
 void serchbyid();
@@ -30,6 +43,7 @@ void displaystatistics();
 void countage();
 void reservationsbystatus();
 void modidfier_and_delet();
+void elment10();
 
 void displaymenu()
 {
@@ -40,6 +54,7 @@ void displaymenu()
     printf("4-Trier  reservations\n");
     printf("5-serche  reservation\n");
     printf("6-dispalay  status\n");
+
     printf("7-ext\n");
     printf("choix :\n");
 }
@@ -48,7 +63,8 @@ void addreservation()
 {
     if (resservationcount < reservation)
     {
-        printf("entre name of user :");
+
+        printf("entre name  :");
         scanf("%s", res[resservationcount].name);
         printf("entre first name :");
         scanf("%s", res[resservationcount].first_name);
@@ -57,7 +73,7 @@ void addreservation()
         scanf("%d", &res[resservationcount].age);
         printf("ente phone number  :");
         scanf("%s", &res[resservationcount].phone);
-
+        idgenerator++;
         printf("enter resservation Date (dd-mm-yyyy): ");
         scanf("%s", res[resservationcount].reservaton_date);
         int choce;
@@ -99,13 +115,13 @@ void addreservation()
 
         resservationcount++;
 
-        res[resservationcount].id = resservationcount + 1;
+        res[resservationcount].id = idgenerator++;
+        printf(" id:%d\n", res[resservationcount].id);
     }
     else
     {
         printf("maximum number of resservations reached.\n ");
     }
-    displaymenu();
 }
 
 void displayressirvtion()
@@ -160,9 +176,9 @@ void tri()
 
 void tribyalphabet()
 {
-    for (int i = 0; i < resservationcount - 1; i++)
+    for (int i = 0; i < resservationcount; i++)
     {
-        for (int j = 0; j < resservationcount - i - 1; j++)
+        for (int j = 0; j < resservationcount  - 1; j++)
         {
             if (strcmp(res[j].name, res[j + 1].name) > 0)
             {
@@ -172,13 +188,12 @@ void tribyalphabet()
             }
         }
     }
-    displayressirvtion();
 }
 void tribydate()
 {
-    for (int i = 0; i < resservationcount - 1; i++)
+    for (int i = 0; i < resservationcount ; i++)
     {
-        for (int j = 0; j < resservationcount - i - 1; j++)
+        for (int j = 0; j < resservationcount  - 1; j++)
         {
             if (strcmp(res[j].reservaton_date, res[j + 1].reservaton_date) > 0)
             {
@@ -192,9 +207,9 @@ void tribydate()
 }
 void tribystatus()
 {
-    for (int i = 0; i < resservationcount - 1; i++)
+    for (int i = 0; i < resservationcount ; i++)
     {
-        for (int j = 0; j < resservationcount - i - 1; j++)
+        for (int j = 0; j < resservationcount  - 1; j++)
         {
             if (strcmp(res[j].satuts, res[j + 1].satuts) > 0)
             {
@@ -246,17 +261,24 @@ void serchbyname()
     char tabl[30];
     printf(" serche :");
     scanf("%s", tabl);
-    int a = 0;
+    
     for (int i = 0; i < resservationcount; i++)
     {
 
         if (strcmp(res[i].name, tabl) == 0)
         {
-            a = 1;
+
+            
             printf("resseraoin found !");
+             printf("name :%s\n", res[i].name);
+            printf("first name :%s\n", res[i].first_name);
+            printf("age:%d\n", res[i].age);
+            printf("phone:%s\n", res[i].phone);
+            printf("satuts:%s\n", res[i].satuts);
+            printf(" id:%d\n", res[i].id);
         }
     }
-    displayressirvtion();
+    
 }
 void serchbyid()
 {
@@ -264,16 +286,22 @@ void serchbyid()
     int id;
     printf(" serche :");
     scanf("%d", &id);
-    int a = 0;
+    
     for (int i = 0; i < resservationcount; i++)
     {
         if (res[i].id == id)
         {
-            a = 1;
+            
             printf("resseraoin found !");
+             printf("name :%s\n", res[i].name);
+            printf("first name :%s\n", res[i].first_name);
+            printf("age:%d\n", res[i].age);
+            printf("phone:%s\n", res[i].phone);
+            printf("satuts:%s\n", res[i].satuts);
+            printf(" id:%d\n", res[i].id);
         }
     }
-    displayressirvtion();
+    
 }
 void serchbydate()
 {
@@ -281,16 +309,24 @@ void serchbydate()
     char date[11];
     printf(" serche :");
     scanf("%s", date);
-    int a = 0;
+    int a=0;
     for (int i = 0; i < resservationcount; i++)
     {
         if (strcmp(res[i].reservaton_date, date) == 0)
         {
-            a = 1;
+            a=1;
             printf("resseratoin found !");
+            printf("===========================");
+
+             printf("name :%s\n", res[i].name);
+            printf("first name :%s\n", res[i].first_name);
+            printf("age:%d\n", res[i].age);
+            printf("phone:%s\n", res[i].phone);
+            printf("satuts:%s\n", res[i].satuts);
+            printf(" id:%d\n", res[i].id);
         }
     }
-    displayressirvtion();
+   
 
     if (a != 1)
     {
@@ -302,7 +338,7 @@ void modidfier_and_delet()
     int id;
     int found = 0;
 
-    printf("Enter the reservation ID to modify or delete: ");
+    printf("Enter the reservation id to modify or delete: ");
     scanf("%d", &id);
 
     for (int i = 0; i < resservationcount; i++)
@@ -319,18 +355,44 @@ void modidfier_and_delet()
 
             if (choice == 1)
             {
+                int x;
+                printf("1-modifer name: ");
+                printf("2-modifer first name: ");
+                printf("3-modifer age: ");
+                printf("4-modifer phonr number: ");
+                printf("5-modifer date (dd-mm-yyyy: ");
+                scanf("%d", &x);
+                switch (x)
+                {
+                case 1:
+                    printf("enter new name: ");
+                    scanf("%s", res[i].name);
+                    break;
+                case 2:
+                    printf("enter new first name: ");
+                    scanf("%s", res[i].first_name);
 
-                printf("enter new name: ");
-                scanf("%s", res[i].name);
-                printf("enter new first name: ");
-                scanf("%s", res[i].first_name);
-                printf("enter new age: ");
-                scanf("%d", &res[i].age);
-                printf("enter new phone number: ");
-                scanf("%s", res[i].phone);
-                printf("enter new reservation date (dd-mm-yyyy): ");
-                scanf("%s", res[i].reservaton_date);
-                printf("resservation updated successfully!\n");
+                    break;
+                case 3:
+                    printf("enter new age: ");
+                    scanf("%d", &res[i].age);
+                    break;
+                case 4:
+                    printf("enter new phone number: ");
+                    scanf("%s", res[i].phone);
+
+                    break;
+                case 5:
+                    printf("enter new reservation date (dd-mm-yyyy): ");
+                    scanf("%s", res[i].reservaton_date);
+
+                    break;
+
+                default:
+                    printf("ivalide number");
+                    break;
+                }
+
                 int choce;
                 printf("Choisissez le statut:\n");
                 printf("1 - validated\n");
@@ -367,7 +429,6 @@ void modidfier_and_delet()
                     printf("invalid choice\n");
                     break;
                 }
-
             }
             else if (choice == 2)
             {
@@ -472,7 +533,9 @@ void reservationsbystatus()
 }
 
 int main()
+
 {
+
     int choix;
     do
     {
@@ -514,6 +577,9 @@ int main()
         case 6:
             system("cls");
             displaystatistics();
+            break;
+
+            ;
             break;
         case 7:
             system("cls");
